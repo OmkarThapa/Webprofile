@@ -8,6 +8,7 @@ body {
 .topnav {
   /* position: fixed;
   overflow: hidden; */
+  margin-top: 0;
   overflow: hidden;
   background-color: #333;
 }
