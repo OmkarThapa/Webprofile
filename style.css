@@ -7,7 +7,7 @@ body {
 /* Nav-bar  */
 .topnav {
   left: 0;
-  z-index: -100px;
+  /* z-index: -100px; */
   padding-top: 0;
   right: 0;
   position: fixed;
@@ -19,7 +19,6 @@ body {
 }
 
 .topnav a {
-
   float: left;
   display: block;
   color: #f2f2f2;
@@ -36,14 +35,14 @@ body {
 }
 
 .navbar {
-  position: fixed;
+  position: static;
   right: 0;
   left: 0;
   top: 0;
-
 }
 
 .topnav a.active {
+  height: 58px;
   background-color: #04aa6d;
   color: white;
 }
@@ -61,11 +60,12 @@ body {
     float: right;
     display: block;
   }
+  
 }
 
 @media screen and (max-width: 600px) {
   .topnav.responsive {
-    position: relative;
+    position: absolute;
   }
 
   .topnav.responsive .icon {
@@ -84,14 +84,15 @@ body {
 /* Scroll Bar */
 .progress-container {
   width: 100%;
-  height: 8px;
-  background: #ccc;
+  height: 10px;
+  background: rgb(171, 171, 171);
 }
 
 .progress-bar {
-  height: 8px;
+  position: absolute;
+  height: 10px;
   background: #f700ff44;
-  width: 0%;
+  width: 100%;
 }
 
 /* Dark Theme */
@@ -122,23 +123,31 @@ button {
 }
 
 button:hover {
-  background-color: #3e8e41
+  background-color: #3e8e41;
 }
-.resumebtn{
+.resumebtn {
   position: absolute;
-  top: 120px;
+  top: 100px;
   right: 100px;
 }
 
 .intro {
   position: absolute;
   right: 800px;
-  top: 400px ;
+  top: 400px;
   font-size: xx-larger;
- font-weight: 5000;
+  font-weight: 5000;
   text-align: center;
 }
 
-.education{
-
+.education {
+}
+button {
+  border-radius: 500px;
+}
+section {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
 }
