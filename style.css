@@ -4,16 +4,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Nav-bar  */
+
+/*---------------- Nav-bar----------------------*/
+
 .topnav {
   left: 0;
-  /* z-index: -100px; */
   padding-top: 0;
   right: 0;
   position: fixed;
   overflow: hidden;
   margin-top: 0;
-  opacity: 85%;
+  /* opacity: 85%; */
   overflow: hidden;
   background-color: #333;
 }
@@ -36,13 +37,14 @@ body {
 
 .navbar {
   position: static;
+  z-index: 9999;
   right: 0;
   left: 0;
   top: 0;
 }
 
 .topnav a.active {
-  height: 58px;
+  height: 25px;
   background-color: #04aa6d;
   color: white;
 }
@@ -51,6 +53,7 @@ body {
   display: none;
 }
 
+/* ---------------Responsive------------------ */
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {
     display: none;
@@ -60,18 +63,17 @@ body {
     float: right;
     display: block;
   }
-  
 }
 
 @media screen and (max-width: 600px) {
   .topnav.responsive {
-    position: absolute;
+    position:fixed;
   }
 
   .topnav.responsive .icon {
-    /* position: absolute; */
-    right: 0;
-    top: 0;
+    right: 0px;
+    left: 0px;
+    top: 0px;
   }
 
   .topnav.responsive a {
@@ -84,70 +86,187 @@ body {
 /* Scroll Bar */
 .progress-container {
   width: 100%;
-  height: 10px;
   background: rgb(171, 171, 171);
 }
 
 .progress-bar {
-  position: absolute;
-  height: 10px;
-  background: #f700ff44;
+  position:fixed;
+  height: 5px;
+  background: #acacac44;
   width: 100%;
 }
 
 /* Dark Theme */
 .dark-mode {
-  background-color: rgb(104, 103, 103);
-  color: rgb(255, 255, 255);
+  background-color: #3F3F3F;
+  color: #C8C8C8;
 }
+/* 
+.lite-mode{
+  background-color: #88C8CB;
+  color: #C08C8C;
+} */
 
-button {
+#resumebtn , #themebtn {
   text-align: center;
-  cursor: pointer;
+  cursor:pointer;
   outline: none;
   color: #fff;
   background-color: #04aa6d;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px rgb(122, 122, 122);
-  padding: 10px;
+  box-shadow: 0 7px rgb(122, 122, 122);
+  padding: 15px;
   float: right;
 }
 
-.themebtn {
-  padding: 15px;
+#resumebtn , #themebtn{
+  border-radius: 12px;
+
 }
 
-.themebtn:active {
-  transform: translateY(4px);
+#themebtn:active, #resumebtn:active {
+  transform: translateY(5px);
 }
 
-button:hover {
+#themebtn:hover, #resumebtn:hover {
   background-color: #3e8e41;
 }
-.resumebtn {
-  position: absolute;
-  top: 100px;
-  right: 100px;
-}
 
-.intro {
-  position: absolute;
-  right: 800px;
-  top: 400px;
-  font-size: xx-larger;
-  font-weight: 5000;
-  text-align: center;
-}
-
-.education {
-}
-button {
-  border-radius: 500px;
-}
 section {
   display: grid;
   place-items: center;
   align-content: center;
   min-height: 100vh;
 }
+
+.resumebtn{
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ---------------Timeline------------------ */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #ffff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  z-index: -1;
+  background-color:inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -5px;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid #ff9f55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }}
